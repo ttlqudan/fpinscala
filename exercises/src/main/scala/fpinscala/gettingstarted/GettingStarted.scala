@@ -38,11 +38,8 @@ object MyModule {
   def fib(n: Int): Int = {
     @annotation.tailrec
     def go(n: Int, pValue: Int, ppValue: Int): Int = {
-      if (n == 0) 0
-      if (n == 1) 0
-      else if (n == 2) 1
-      //      if (n < 2)
-      //        return n * ppValue;
+      if (n < 2)
+        return n * ppValue;
       return go(n - 1, pValue + ppValue, pValue);
     }
     go(n, 1, 0)
@@ -81,8 +78,7 @@ object TestFib {
   // test implementation of `fib`
   def main(args: Array[String]): Unit = {
     println("Expected: 0, 1, 1, 2, 3, 5, 8")
-    println(fib(6))
-//    println("Actual:   %d, %d, %d, %d, %d, %d, %d".format(fib(1), fib(2), fib(3), fib(4), fib(5), fib(6)))
+    println("Actual:   %d, %d, %d, %d, %d, %d, %d".format(fib(1), fib(2), fib(3), fib(4), fib(5), fib(6), fib(7)))
   }
 }
 
